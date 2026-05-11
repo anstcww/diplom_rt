@@ -1473,87 +1473,50 @@ header.container {
         line-height: 145%;
     }
 
-}
-
-/* MOBILE EXTRA COLUMN */
-
-@media (max-width: 768px) {
-
-    /* скрываем кнопку на ПК */
+    /*дополнительно*/
 
     .extra-btn {
-
         display: flex;
-
         align-items: center;
-
         gap: 8px;
-
         border: none;
-
         background: transparent;
-
         padding: 0;
-
         margin-top: 6px;
-
         font-size: 14px;
-
         font-weight: 500;
-
         color: #7744FF;
-
         cursor: pointer;
     }
 
-    /* стрелка */
-
     .extra-btn img {
-
         width: 12px;
-
         transition: transform 0.3s ease;
     }
 
-    /* скрытый контент */
-
     .extra-content {
-
         max-height: 0;
-
         overflow: hidden;
-
         opacity: 0;
-
         transition:
             max-height 0.4s ease,
             opacity 0.3s ease,
             margin-top 0.3s ease;
     }
 
-    /* открытие */
-
     .card.active .extra-content {
-
         max-height: 1000px;
-
         opacity: 1;
-
         margin-top: 18px;
     }
 
-    /* поворот стрелки */
-
     .card.active .extra-btn img {
-
         transform: rotate(180deg);
     }
 
-    /* чтобы колонка не ломалась */
-
     .extra-column {
-
         width: 100%;
     }
 
 }
+
