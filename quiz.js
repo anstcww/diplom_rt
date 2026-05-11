@@ -1,7 +1,5 @@
-// ==================== НАСТРОЙКИ ====================
-const totalQuestions = 9;
 
-// ==================== ФУНКЦИИ ====================
+const totalQuestions = 9;
 
 function showQuestion(n) {
     document.querySelectorAll('.windows').forEach(block => {
@@ -27,7 +25,6 @@ function saveCurrentAnswer(questionNumber) {
     return false;
 }
 
-// === Главная функция сохранения всех ответов ===
 function saveAllAnswers() {
     const answers = {};
     for (let i = 1; i <= totalQuestions; i++) {
@@ -41,13 +38,11 @@ function saveAllAnswers() {
     return answers;
 }
 
-// ==================== ЗАПУСК ====================
 
 document.addEventListener('DOMContentLoaded', () => {
     
     showQuestion(1);
 
-    // Кнопки "Далее" и "Узнать результат"
     document.querySelectorAll('.go').forEach(btn => {
         btn.addEventListener('click', () => {
             const currentBlock = btn.closest('.windows');
@@ -55,16 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const qNumber = parseInt(currentBlock.id.split('-')[1]);
 
-            // Сохраняем текущий ответ
             if (!saveCurrentAnswer(qNumber)) {
                 alert('Пожалуйста, выберите вариант ответа');
                 return;
             }
 
-            // Если это последний вопрос
             if (qNumber === totalQuestions) {
-                saveAllAnswers();                    // ← Сохраняем всё
-                setTimeout(() => {                   // небольшая задержка
+                saveAllAnswers();                   
+                setTimeout(() => {                 
                     window.location.href = 'result.html';
                 }, 100);
             } else {
@@ -73,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Кнопки "Назад"
     document.querySelectorAll('.nazad').forEach(btn => {
         btn.addEventListener('click', () => {
             const currentBlock = btn.closest('.windows');
@@ -83,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Восстановление ответов
     for (let i = 1; i <= totalQuestions; i++) {
         const saved = localStorage.getItem(`answer_${i}`);
         if (saved) {
