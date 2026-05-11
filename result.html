@@ -1730,13 +1730,11 @@
     </div>
 
 <script>
-    // ==================== АДАПТИВНЫЙ ТЕКСТ + ПОДБОР + КНОПКА ДОПОЛНИТЕЛЬНО ====================
-
     document.addEventListener('DOMContentLoaded', () => {
         
         const answers = JSON.parse(localStorage.getItem('quizAnswers')) || {};
 
-        // === 1. АДАПТИВНЫЙ ТЕКСТ ===
+        //адаптивный текст
         let familyText = '';
         switch(answers.q1) {
             case "1": familyText = "1 человек"; break;
@@ -1767,17 +1765,15 @@
         const textBlock = document.querySelector('.pazl p');
         if (textBlock) textBlock.innerHTML = fullText;
 
-        // === 2. ПОДБОР ТАРИФОВ ===
         const recommended = getBestTariffs(answers);
         
         document.querySelectorAll('.card').forEach(card => card.style.display = 'none');
         recommended.forEach(card => card.style.display = 'block');
 
-        // === 3. КНОПКА "ДОПОЛНИТЕЛЬНО" ===
         initExtraButtons();
     });
 
-    // Функция подбора тарифов
+    // функция подбора тарифов
     function getBestTariffs(answers) {
         const cards = Array.from(document.querySelectorAll('.card'));
         let scoredCards = [];
@@ -1812,16 +1808,14 @@
         return scoredCards.slice(0, 4).map(item => item.card);
     }
 
-    // === ОБРАБОТЧИК КНОПКИ "ДОПОЛНИТЕЛЬНО" ===
+    //   обработчик кнопки "дополнительно" (мобильная версия)
     function initExtraButtons() {
         const buttons = document.querySelectorAll('.extra-btn');
         
         buttons.forEach(button => {
-            // Удаляем старые обработчики, чтобы не было дублей
             button.replaceWith(button.cloneNode(true));
         });
 
-        // Добавляем новые обработчики
         document.querySelectorAll('.extra-btn').forEach(button => {
             button.addEventListener('click', () => {
                 const card = button.closest('.card');
