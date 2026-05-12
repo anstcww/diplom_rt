@@ -9,8 +9,22 @@ function showQuestion(n) {
     const target = document.getElementById(`question-${n}`);
     if (target) target.classList.add('active');
 
+    // Обновляем заголовок
     const header = document.querySelector(`#question-${n} h2`);
     if (header) header.textContent = `Вопрос ${n} из ${totalQuestions}`;
+
+    // === Обновляем Progress Bar ===
+    const progressFill = target.querySelector('.progress-fill');
+    const progressText = target.querySelector('.progress-text');
+
+    if (progressFill) {
+        const percentage = (n / totalQuestions) * 100;
+        progressFill.style.width = `${percentage}%`;
+    }
+
+    if (progressText) {
+        progressText.textContent = `${n} из ${totalQuestions}`;
+    }
 }
 
 function saveCurrentAnswer(questionNumber) {
