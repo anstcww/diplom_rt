@@ -48,6 +48,7 @@ body {
 header.container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-top: 18px;
     margin-bottom: 18px;
 }
@@ -496,6 +497,19 @@ header.container {
 
 /* шапка */
 
+.back-to-home {
+    color: #491CC3;
+    text-decoration: underline;
+    text-underline-offset: 2px;      
+    font-size: 15px;
+    font-weight: 400;
+    transition: opacity 0.2s;
+}
+
+.back-to-home:hover {
+    opacity: 0.8;
+}
+
 .hat {
     background-image: linear-gradient(135deg, #7744FF,#FF4F12);
     text-align: center;
@@ -558,6 +572,28 @@ header.container {
 }
 
 /* вопрос */
+
+.progress-container {
+    width: 108%;
+    padding: 10px 10px 20px;
+    border-radius: 12px 12px 0 0;
+}
+
+.progress-bar {
+    height: 6px;
+    background: #e5e5e5;
+    border-radius: 9999px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-fill {
+    height: 108%;
+    width: 0%;
+    background: linear-gradient(90deg, #7744FF, #FF4F12);
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 9999px;
+}
 
 .window h1 {
     margin-top: 32px;
@@ -718,6 +754,14 @@ header.container {
     .window h2 {
         margin: 0;
         font-size: 14px;
+    }
+
+    .progress-container {
+        width: 100%;
+        }
+
+    .progress-fill {
+        height: 100%;
     }
 
     /* заголовок вопроса */
@@ -1473,50 +1517,87 @@ header.container {
         line-height: 145%;
     }
 
-    /*дополнительно*/
+}
+
+/* MOBILE EXTRA COLUMN */
+
+@media (max-width: 768px) {
+
+    /* скрываем кнопку на ПК */
 
     .extra-btn {
+
         display: flex;
+
         align-items: center;
+
         gap: 8px;
+
         border: none;
+
         background: transparent;
+
         padding: 0;
+
         margin-top: 6px;
+
         font-size: 14px;
+
         font-weight: 500;
+
         color: #7744FF;
+
         cursor: pointer;
     }
 
+    /* стрелка */
+
     .extra-btn img {
+
         width: 12px;
+
         transition: transform 0.3s ease;
     }
 
+    /* скрытый контент */
+
     .extra-content {
+
         max-height: 0;
+
         overflow: hidden;
+
         opacity: 0;
+
         transition:
             max-height 0.4s ease,
             opacity 0.3s ease,
             margin-top 0.3s ease;
     }
 
+    /* открытие */
+
     .card.active .extra-content {
+
         max-height: 1000px;
+
         opacity: 1;
+
         margin-top: 18px;
     }
 
+    /* поворот стрелки */
+
     .card.active .extra-btn img {
+
         transform: rotate(180deg);
     }
 
+    /* чтобы колонка не ломалась */
+
     .extra-column {
+
         width: 100%;
     }
 
 }
-
